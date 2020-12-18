@@ -14,7 +14,7 @@ should be part of the postgresql development tools).
 Then, execute:
 
 ```
-gcc -I$(pg_config --includedir) -fPIC -MMD -MP -MF pgutft.o.d -o pgutft.o pgutft.c
+gcc -I$(pg_config --includedir) -fPIC -MMD -MP -MF pgutft.o.d -o pgutft.o pgutft.c -c
 gcc -o libpgUTF-T.so pgutft.o -shared -fPIC
 cp pgutft.o $(pg_config --pkglibdir)
 ```
