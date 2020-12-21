@@ -93,7 +93,7 @@ Datum utft_to_utf8(PG_FUNCTION_ARGS)
             indexT += 4;
 
             /* Unendo i 21 bit restanti, ho il codice Unicode del carattere */
-            unsigned long c = ((b3 & 127) | ((b2 & 127)<<7) | ((b3 & 127)<<14)) - 0x0F0000UL;
+            unsigned long c = ((b3 & 127) | ((b2 & 127)<<7) | ((b1 & 127)<<14)) - 0x0F0000UL;
 
             if (c < 0x7F) {
                 // codifico c in UTF-8 su un solo byte
