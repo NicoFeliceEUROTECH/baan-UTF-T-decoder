@@ -15,7 +15,7 @@ Download pgutft.c file
 Then, execute:
 ```
 sudo docker cp pgutft.c mycontainer:/usr/include/postgresql/pgutft.c
-sudo docker exec -it mycontainer bin/bash
+sudo docker exec -it mycontainer /bin/bash
 cp -a /usr/include/postgresql/12/server/. /usr/include/postgresql/
 cd $(pg_config --includedir)
 gcc -I$(pg_config --includedir) -fPIC -MMD -MP -MF pgutft.o.d -o pgutft.o pgutft.c -c
