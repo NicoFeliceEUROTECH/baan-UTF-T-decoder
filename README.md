@@ -11,13 +11,17 @@ using foreign data wrapper. This way we may develop applications on PostgreSQL.
 # INSTALL
 In order to compile this extension, verify that you have `pg_config` in your path (it
 should be part of the postgresql development tools).
+Download pgutft.c file
 Then, execute:
-
 ```
+sudo docker cp pgutft.c mycontainer:/usr/include/postgresql/pgutft.c
+sudo docker exec -it mycontainer bin/bash
+cp -a /usr/include/postgresql/12/server/. /usr/include/postgresql/
+cd $(pg_config --includedir)
 gcc -I$(pg_config --includedir) -fPIC -MMD -MP -MF pgutft.o.d -o pgutft.o pgutft.c -c
-gcc -o libpgUTF-T.so pgutft.o -shared -fPIC
-cp pgutft.o $(pg_config --pkglibdir)
+gcc -o libpgUTF-T.so pgutft.o -shared
 cp libpgUTF-T.so $(pg_config --pkglibdir)
+cp pgutft.o $(pg_config --pkglibdir)
 ```
 
 once the library is installed in the postgresql extension directory, connect to your database
